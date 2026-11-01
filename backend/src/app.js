@@ -97,11 +97,27 @@ app.use("/api/payment", paymentRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/restaurant-image", restaurantImageRoutes);
 
+<<<<<<< HEAD
 // Handle unknown routes
 app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: `Route not found: ${req.method} ${req.originalUrl}`,
+=======
+app.use("/api/restaurant-image", restaurantImageRoutes);
+
+// Health Check Route
+
+app.use((req, res, next) => {
+  console.log("REQUEST:", req.method, req.url);
+  next();
+});
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "FoodHub API is running 🚀",
+>>>>>>> a2a06eb (Fix Vercel cart page routing)
   });
 });
 

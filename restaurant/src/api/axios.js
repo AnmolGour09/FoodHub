@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import axios from "axios";
 
 // const API = axios.create({
@@ -16,6 +17,8 @@
 
 // export default API;
 
+=======
+>>>>>>> a2a06eb (Fix Vercel cart page routing)
 
 import axios from "axios";
 
@@ -46,4 +49,8 @@ API.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2a06eb (Fix Vercel cart page routing)
 export default API;

@@ -67,5 +67,9 @@ export const uploadRestaurantLogo = async (ownerId, file) => {
 
   throw error;
 }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> a2a06eb (Fix Vercel cart page routing)
 };
