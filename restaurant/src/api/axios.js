@@ -1,8 +1,29 @@
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// // import axios from "axios";
+
+// // const API = axios.create({
+// //   baseURL: "http://localhost:5000/api",
+// // });
+
+// // API.interceptors.request.use((config) => {
+// //   const token = localStorage.getItem("restaurantToken");
+
+// //   if (token) {
+// //     config.headers.Authorization = `Bearer ${token}`;
+// //   }
+
+// //   return config;
+// // });
+
+// // export default API;
+
+// =======
+// >>>>>>> a2a06eb (Fix Vercel cart page routing)
+
 // import axios from "axios";
 
 // const API = axios.create({
-//   baseURL: "http://localhost:5000/api",
+//   baseURL: `${import.meta.env.VITE_API_URL}/api`,
 // });
 
 // API.interceptors.request.use((config) => {
@@ -15,10 +36,21 @@
 //   return config;
 // });
 
-// export default API;
+// API.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response?.status === 401) {
+//       localStorage.removeItem("restaurantToken");
 
-=======
->>>>>>> a2a06eb (Fix Vercel cart page routing)
+//       // Redirect only if the restaurant session has expired.
+//       window.location.href = "/restaurant/login";
+//     }
+
+//     return Promise.reject(error);
+//   }
+// );
+// <<<<<<< HEAD
+
 
 import axios from "axios";
 
@@ -41,16 +73,18 @@ API.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem("restaurantToken");
+      sessionStorage.removeItem("restaurantDashboard");
 
-      // Redirect only if the restaurant session has expired.
       window.location.href = "/restaurant/login";
     }
 
     return Promise.reject(error);
   }
 );
-<<<<<<< HEAD
-=======
 
->>>>>>> a2a06eb (Fix Vercel cart page routing)
 export default API;
+
+// =======
+
+// >>>>>>> a2a06eb (Fix Vercel cart page routing)
+// export default API;
