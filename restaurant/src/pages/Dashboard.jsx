@@ -1,5 +1,6 @@
 
-import { useMemo, useState } from "react";
+// import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   BarChart,
@@ -41,20 +42,31 @@ function Dashboard() {
     refreshDashboard,
   } = useDashboard();
 
+  useEffect(() => {
+  refreshDashboard(7);
+}, [refreshDashboard]);
+
   const [period, setPeriod] = useState(7);
   const [chartType, setChartType] = useState("orders");
 
+  // const handlePeriodChange = async (event) => {
+  //   const selectedPeriod = Number(event.target.value);
+
+  //   setPeriod(selectedPeriod);
+
+  //   try {
+  //     await refreshDashboard(selectedPeriod);
+  //   } catch (err) {
+  //     console.error("Analytics update failed:", err);
+  //   }
+  // };
   const handlePeriodChange = async (event) => {
-    const selectedPeriod = Number(event.target.value);
+  const selectedPeriod = Number(event.target.value);
 
-    setPeriod(selectedPeriod);
+  setPeriod(selectedPeriod);
 
-    try {
-      await refreshDashboard(selectedPeriod);
-    } catch (err) {
-      console.error("Analytics update failed:", err);
-    }
-  };
+  await refreshDashboard(selectedPeriod);
+};
 
   // Backend returns dailyOrders
   const chartData = useMemo(() => {
